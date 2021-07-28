@@ -1,0 +1,204 @@
+<!DOCTYPE HTML>
+<!--
+	Spectral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Harvest · Hungryagri</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <!--css-->
+    <link rel="stylesheet" href="static/assets/css/main.css"/>
+    <noscript>
+        <link rel="stylesheet" href="static/assets/css/noscript.css"/>
+    </noscript>
+    <style>
+        #info_block {
+            margin: 20px;
+        }
+
+        #body_box {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .list-group {
+            margin: 25px;
+        }
+
+        #search {
+            padding: 20px;
+        }
+
+    </style>
+    <script>
+
+        $(document).ready(function () {
+            showInfo();
+        });
+
+        function showInfo() {
+            $.ajax({
+                type: 'GET',
+                url: '/harvest',
+                data: {},
+                success: function (response) {
+                    let infos = response['all_infos']
+                    for (let i = 0; i < infos.length; i++) {
+                        let title = infos[i]['title']
+                        let address = infos[i]['address']
+                        let area = infos[i]['area']
+                        let phone = infos[i]['phone']
+                        let price = infos[i]['price']
+
+                        let temp_html = `<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action active">${title}</a>
+  <a href="#" class="list-group-item list-group-item-action">${address}</a>
+  <a href="#" class="list-group-item list-group-item-action">${area}</a>
+  <a href="#" class="list-group-item list-group-item-action">${phone}</a>
+  <a href="#" class="list-group-item list-group-item-action disabled">${price}</a>
+</div>`
+                        $('#info_block').append(temp_html)
+                    }
+                }
+            })
+        }
+
+        // 검색창 기능 구현
+
+
+    </script>
+
+</head>
+<body class="is-preload">
+
+<!-- Page Wrapper -->
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <header id="header">
+        <h1>hungryagri</h1>
+        <nav id="nav">
+            <ul>
+                <li class="special">
+                    <a href="#menu" class="menuToggle"><span>Menu</span></a>
+                    <div id="menu">
+                        <ul>
+                            <li><a href="/">HOME</a></li>
+                            <li><a href="/harvest2">HARVEST</a></li>
+                            <li><a href="/recipe2">RECIPE</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <article id="main">
+        <header id="second">
+            <h2>모두의 텃밭</h2>
+            <p>헝그리 에그리는 푸드닝족을 위한 텃밭 분양 정보를 제공하고 있습니다.</p>
+        </header>
+        <section class="wrapper style5">
+            <div class="inner">
+                <nav id="search" class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="/">HUNGRAYAGRI</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   href="https://www.modunong.or.kr:449/contents/garden/gardenList.do?menuNo=17">출처:모두가
+                                    도시농부</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    주소 목록
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">서울특별시</a>
+                                    <a class="dropdown-item" href="#">부산광역시</a>
+                                    <a class="dropdown-item" href="#">인천광역시</a>
+                                    <a class="dropdown-item" href="#">대구광역시</a>
+                                    <a class="dropdown-item" href="#">광주광역시</a>
+                                    <a class="dropdown-item" href="#">대전광역시</a>
+                                    <a class="dropdown-item" href="#">울산광역시</a>
+                                    <a class="dropdown-item" href="#">세종특별자치시</a>
+                                    <a class="dropdown-item" href="#">제주특별자치도</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">전체</a>
+                                </div>
+                            </li>
+                            <!-- 검색 기능을 위한 코드 시작 -->
+
+                            <!-- 검색 기능을 위한 코드 끝 -->
+                        </ul>
+
+                    </div>
+                </nav>
+
+                <div id="body_box">
+                    <div class="card text-center" id="info_block">
+
+                    </div>
+                </div>
+
+            </div>
+</div>
+</div>
+</section>
+</article>
+
+<!-- Footer -->
+<footer id="footer">
+    <ul class="icons">
+        <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+        <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+        <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+    </ul>
+    <ul class="copyright">
+        <li>&copy; Untitled</li>
+        <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    </ul>
+</footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="static/assets/js/jquery.min.js"></script>
+<script src="static/assets/js/jquery.scrollex.min.js"></script>
+<script src="static/assets/js/jquery.scrolly.min.js"></script>
+<script src="static/assets/js/browser.min.js"></script>
+<script src="static/assets/js/breakpoints.min.js"></script>
+<script src="static/assets/js/util.js"></script>
+<script src="static/assets/js/main.js"></script>
+
+</body>
+</html>

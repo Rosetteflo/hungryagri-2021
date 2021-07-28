@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<!--
+	Spectral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+    <title>Recipe · Hungryagri</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <!--css-->
+    <link rel="stylesheet" href="static/assets/css/main.css"/>
+    <noscript>
+        <link rel="stylesheet" href="static/assets/css/noscript.css"/>
+    </noscript>
+    <style>
+        #post-box {
+            display: none;
+        }
+
+        #recipe-box {
+            display: none;
+        }
+
+        #header_2 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+    </style>
+
+    <script>
+        <!---->
+        $(document).ready(function () {
+            listing();
+        });
+
+        function listing() {
+            $.ajax({
+                type: "GET",
+                url: "/recipe",
+                data: {},
+                success: function (response) {
+                    let lists = response['all_lists']
+                    for (let i = 0; i < lists.length; i++) {
+                        let title = lists[i]['title']
+                        let review = lists[i]['review']
+                        let name = lists[i]['name']
+                        let image = lists[i]['image']
+
+                        let temp_html = `
+                        <section class="spotlight">
+                        <div class="image"><img src="${image}" alt=""/></div>
+                        <div class="content">
+                            <h2>${title}<br/>${name}
+                               </h2>
+                            <p>${review}</p>
+                        </div>
+                    </section>`
+
+                        $('#two').append(temp_html)
+                    }
+
+                }
+            })
+        }
+
+        function makeReview() {
+            let name = $('#demo-name').val()
+            let title = $('#demo-title').val()
+            let review = $('#demo-message').val()
+            let image = $('#basic-url').val()
+
+            $.ajax({
+                type: "POST",
+                url: "/recipe",
+                data: {name_give: name, title_give: title, review_give: review, image_give: image},
+                success: function (response) {
+                    if (response["result"] == "success") {
+                        alert(response["msg"]);
+                        window.location.reload();
+                    }
+                }
+            })
+        }
+
+
+        <!--openclose기능-->
+        function openclose() {
+            let status = $('#recipe-box').css('display');
+            if (status == 'block') {
+                $('#recipe-box').hide();
+                $('#btn-recipe-box').text('레시피 보기');
+
+            } else {
+                $('#recipe-box').show();
+                $('#btn-recipe-box').text('닫기');
+            }
+        }
+
+
+        function openclose_2() {
+            let status = $('#post-box').css('display');
+            if (status == 'block') {
+                $('#post-box').hide();
+                $('#btn-post-box').text('레시피 만들기');
+
+            } else {
+                $('#post-box').show();
+                $('#btn-post-box').text('닫기');
+            }
+        }
+
+    </script>
+</head>
+<body class="is-preload">
+
+<!-- Page Wrapper -->
+<div id="page-wrapper">
+
+    <!-- Header -->
+    <header id="header">
+        <h1>hungryagri</h1>
+        <nav id="nav">
+            <ul>
+                <li class="special">
+                    <a href="#menu" class="menuToggle"><span>Menu</span></a>
+                    <div id="menu">
+                        <ul>
+                            <li><a href="/">HOME</a></li>
+                            <li><a href="/harvest2">HARVEST</a></li>
+                            <li><a href="/recipe2">RECIPE</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    <article id="main">
+        <header id="header_2">
+            <h2>나만의 비건 레시피 노트</h2>
+            <p><br>나만의 개성있는 비건 레시피가 있나요?😀</br>
+                함께 공유하면 보람은 세배가 된답니다...!</p>
+            <div class="col-6 col-12-medium" id="recipe-btn">
+                <ul class="actions stacked">
+                    <li><a onclick="openclose()" id="btn-recipe-box" class="button primary fit">레시피 보기</a></li>
+
+                </ul>
+                <ul class="actions stacked">
+                    <li><a onclick="openclose_2()" id="btn-post-box" class="button small fit">레시피 만들기</a></li>
+                </ul>
+            </div>
+        </header>
+
+
+        <section id="recipe-box">
+            <h4>My Recipe</h4>
+            <section>
+                <div class="box alt">
+                    <div class="row gtr-50 gtr-uniform">
+                        <div class="col-4"><span class="image fit"><img src="static/images/pic10.jpg" alt=""/></span>
+                        </div>
+                        <div class="col-4"><span class="image fit"><img src="static/images/pic11.jpg" alt=""/></span>
+                        </div>
+                        <div class="col-4"><span class="image fit"><img src="static/images/pic12.jpg" alt=""/></span>
+                        </div>
+                        <div class="col-4"><span class="image fit"><img src="static/images/pic13.jpg" alt=""/></span>
+                        </div>
+                        <div class="col-4"><span class="image fit"><img src="static/images/pic14.jpg" alt=""/></span>
+                        </div>
+                        <div class="col-4"><span class="image fit"><img src="static/images/pic15.jpg" alt=""/></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <section id="two" class="wrapper alt style2">
+                    <section class="spotlight">
+                        <div class="image"><img src="static/images/pic07.jpg" alt=""/></div>
+                        <div class="content">
+                            <h2>85 Best Vegan Recipes<br/>
+                                1. Creamy Broccoli Vegan Pasta</h2>
+                            <p>Most days in our house, Jack and I eat vegan recipes for breakfast, lunch, and dinner. Of
+                                course, there are exceptions, but the food I most enjoy cooking and eating often happens
+                                to be plant-based.</p>
+                        </div>
+                    </section>
+
+                </section>
+            </section>
+        </section>
+
+        </section>
+
+
+        <section id="post-box">
+            <h4>Form</h4>
+            <form method="post" action="#">
+                <div class="row gtr-uniform">
+                    <div class="col-6 col-12-xsmall">
+                        <input type="text" name="demo-name" id="demo-name" value="" placeholder="Name"/>
+                    </div>
+                    <div class="col-6 col-12-xsmall">
+                        <input type="text" name="demo-title" id="demo-title" value="" placeholder="title"/>
+                    </div>
+                    <!--새로 만들 이미지 url-->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+                        </div>
+                        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    </div>
+                    <!--요기까지 입니다.-->
+
+
+                    <div class="col-6 col-12-small">
+                        <input type="checkbox" id="demo-human" name="demo-human" checked>
+                        <label for="demo-human">Not a robot</label>
+                    </div>
+                    <div class="col-12">
+                        <textarea name="demo-message" id="demo-message" placeholder="한 줄 레시피"
+                                  rows="6"></textarea>
+                    </div>
+                    <div class="col-12">
+                        <ul class="actions">
+                            <li><input onclick="makeReview()" type="submit" value="레시피 저장" class="primary"/></li>
+                            <li><input type="reset" value="다시 작성"/></li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+
+</div>
+</section>
+</article>
+
+<!-- Footer -->
+<footer id="footer">
+    <ul class="icons">
+        <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+        <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+        <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+    </ul>
+    <ul class="copyright">
+        <li>&copy; Untitled</li>
+        <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+    </ul>
+</footer>
+
+</div>
+
+<!-- Scripts -->
+<script src="static/assets/js/jquery.min.js"></script>
+<script src="static/assets/js/jquery.scrollex.min.js"></script>
+<script src="static/assets/js/jquery.scrolly.min.js"></script>
+<script src="static/assets/js/browser.min.js"></script>
+<script src="static/assets/js/breakpoints.min.js"></script>
+<script src="static/assets/js/util.js"></script>
+<script src="static/assets/js/main.js"></script>
+
+</body>
+</html>
