@@ -4,8 +4,9 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 from pymongo import MongoClient
-client = MongoClient('localhost', 27017)
-db = client.my
+client = MongoClient('mongodb://test:test@localhost', 27017)
+# client = MongoClient('localhost', 27017)
+db = client.hungryagri
 
 
 ##HTML을 주는 부분
@@ -57,7 +58,7 @@ def show_info():
     info = list(db.moduga.find({}, {'_id': False}))
     return jsonify({'result': 'success', 'all_infos': info})
 
-# 검색 기능 구현
+
 
 
 if __name__ == '__main__':
