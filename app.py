@@ -1,11 +1,10 @@
+
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__)
 
 from pymongo import MongoClient
-
-client = MongoClient('mongodb://test:test@localhost', 27017)
-# client = MongoClient('localhost', 27017)
+client = MongoClient('localhost', 27017)
 db = client.hungryagri
 
 
@@ -26,7 +25,7 @@ def recipe():
 
 
 ##API 역할을 하는 부분
-# 레시피 저장기능
+#레시피 저장기능
 @app.route('/recipe', methods=['POST'])
 def save_recipe():
     name_receive = request.form['name_give']
@@ -37,7 +36,7 @@ def save_recipe():
         'name': name_receive,
         'title': title_receive,
         'review': review_receive,
-        'image': image_receive
+        'image' : image_receive
 
     }
 
@@ -45,23 +44,24 @@ def save_recipe():
 
     return jsonify({'result': 'success', 'msg': '저장 완료!'})
 
-
-# 레시피 목록보기
+#레시피 목록보기
 @app.route('/recipe', methods=['GET'])
 def view_recipe():
     lists = list(db.recipe.find({}, {'_id': False}))
-    return jsonify({'all_lists': lists})
+    return jsonify({'all_lists':lists})
 
 
-# 텃밭 데이터 조회
+#텃밭 데이터 조회
 @app.route('/harvest', methods=['GET'])
 def show_info():
     info = list(db.moduga.find({}, {'_id': False}))
     return jsonify({'result': 'success', 'all_infos': info})
-
 
 # 검색 기능 구현
 
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
+
+
+
