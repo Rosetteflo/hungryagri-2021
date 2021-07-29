@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 from pymongo import MongoClient
 client = MongoClient('localhost', 27017)
-db = client.hungryagri
+db = client.my
 
 
 ##HTML을 주는 부분
