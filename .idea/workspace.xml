@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95d1a3d1-c435-4a86-8328-b0b91f4e5291" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/hello.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hello.py" beforeDir="false" afterPath="$PROJECT_DIR$/hello.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/harvest.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/harvest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/recipe.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/recipe.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,8 +130,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.app" />
-        <item itemvalue="Python.hello" />
         <item itemvalue="Python.test" />
+        <item itemvalue="Python.hello" />
         <item itemvalue="Python.dbprac" />
       </list>
     </recent_temporary>
@@ -152,6 +153,16 @@
       <workItem from="1627536518920" duration="132000" />
       <workItem from="1627537978750" duration="568000" />
       <workItem from="1627555852463" duration="92000" />
+      <workItem from="1627557572956" duration="1149000" />
+      <workItem from="1627608338087" duration="3463000" />
+      <workItem from="1627614493218" duration="1109000" />
+      <workItem from="1627615740478" duration="879000" />
+      <workItem from="1627618062556" duration="173000" />
+      <workItem from="1627619112856" duration="23000" />
+      <workItem from="1627619463116" duration="258000" />
+      <workItem from="1627620007851" duration="65000" />
+      <workItem from="1627620297661" duration="230000" />
+      <workItem from="1627650841029" duration="658000" />
     </task>
     <servers />
   </component>
@@ -171,9 +182,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/hungryagri$app.coverage" NAME="app Coverage Results" MODIFIED="1627534967109" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/hungryagri$app.coverage" NAME="app Coverage Results" MODIFIED="1627650949572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/hungryagri$dbprac.coverage" NAME="dbprac Coverage Results" MODIFIED="1627517229894" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../sparta/pythonprac" />
-    <SUITE FILE_PATH="coverage/hungryagri$test.coverage" NAME="test Coverage Results" MODIFIED="1627521902003" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
-    <SUITE FILE_PATH="coverage/hungryagri$hello.coverage" NAME="hello Coverage Results" MODIFIED="1627529279853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/hungryagri$test.coverage" NAME="test Coverage Results" MODIFIED="1627618119371" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/.." />
+    <SUITE FILE_PATH="coverage/hungryagri$hello.coverage" NAME="hello Coverage Results" MODIFIED="1627610345593" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -19,18 +19,13 @@ for li in lis:
     phone = li.select_one('a > ul > li.area').text
     price = li.select_one('a > ul > li.price').text
 
-print(title,address,area,phone,price)
+
 
 #mongodb 저장하기
 from pymongo import MongoClient
-client = MongoClient('mongodb://test:test@localhost', 27017)
-# client = MongoClient('localhost', 27017)
+# client = MongoClient('mongodb://test:test@localhost', 27017)
+client = MongoClient('localhost', 27017)
 db = client.hungryagri
 
-doc = {'title':title,
-       'address':address,
-       'area':area,
-       'phone':phone,
-       'price':price}
-db.harvest.insert_one(doc)
+
 
